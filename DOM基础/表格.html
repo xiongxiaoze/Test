@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var oTab = document.getElementById('tab1')
+
+            alert(oTab.tBodies[0].rows[1].cells[1].innerHTML)
+        }
+    </script>
+</head>
+<body>
+    <table id="tab1" border="1" width = "500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>蓝色</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>红色</td>
+                <td>34</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>黄色</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>无色</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>黑色</td>
+                <td>5</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

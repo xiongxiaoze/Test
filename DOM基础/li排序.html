@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ul1{background: red}
+        #ul2{background: yellow}
+
+    </style>
+    <script>
+        window.onload = function(){
+            var oUl1 = document.getElementById('ul1')
+            // var oUl2 = document.getElementById('ul2')
+            var oButn = document.getElementById('butn1')
+
+            oButn.onclick = function(){
+                // var oLi = oUl1.children[0]
+                // oUl2.appendChild(oLi)//把原有的元素删除后，再添加到新的地方 的最后面
+                var aLi = oUl1.getElementsByTagName('li')
+                
+                var arr = []//因为获取的aLi不是完全意义上的数组不能用sort
+                for(var i = 0;i<aLi.length;i++){
+                    arr[i] = aLi[i]
+                }
+                arr.sort(function(li1,li2){
+                    var n1 = parseInt(li1.innerHTML)
+                    var n2 = parseInt(li2.innerHTML)
+
+                    return n1-n2
+                })
+                // alert(arr[0].innerHTML)
+                for(var i =0;i<arr.length;i++){
+                    oUl1.appendChild(arr[i])
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <input id="butn1" type="button" value="排序">
+    <ul id="ul1">
+        <li>45</li>
+        <li>67</li>
+        <li>23</li>
+        <li>65</li>
+        <li>89</li>
+    </ul>
+</body>
+</html>

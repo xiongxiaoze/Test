@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{width: 200px;height: 200px;background: red;position: absolute;left: -200px;}
+        #div1 span{position: absolute;width: 20px;height: 60px; background: rgb(101, 73, 204);line-height:20px;
+        right:-20px;top:70px ;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('div1')
+            
+            oDiv.onmouseover = function(){
+                stratmove(0)
+            }
+            oDiv.onmouseout = function(){
+                stratmove(-200)
+            }
+        }
+        var timer = null
+
+        function stratmove(iTarget){
+            var oDiv = document.getElementById('div1')
+        
+            clearInterval(timer)
+            timer = setInterval(function(){
+                var speed = 0
+                if(oDiv.offsetLeft>iTarget){
+                    speed = -10
+                }
+                if(oDiv.offsetLeft<iTarget){
+                    speed = 10
+                }
+                if(oDiv.offsetLeft==iTarget){
+                    clearInterval(timer)
+                }
+                else{
+                    oDiv.style.left = oDiv.offsetLeft+speed+'px'
+                }
+            },30)
+        }
+
+        // function stratmove2(){
+        //     var oDiv = document.getElementById('div1')
+
+        //     clearInterval(timer)
+        //     timer = setInterval(function(){
+        //         if(oDiv.offsetLeft==-200){
+        //             clearInterval(timer)
+        //         }
+        //         else{
+        //             oDiv.style.left = oDiv.offsetLeft-10+'px'//函数合并的关键是把不一样的地方挑出来做成函数或参数放进去
+        //         }
+        //     },30)
+        // }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <span id="span1">分享到</span>
+    </div>
+</body>
+</html>

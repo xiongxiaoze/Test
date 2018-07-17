@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{width: 100px;height: 150px;background: red;position: absolute;right: 0px;top: 243px;}
+    </style>
+    <script>
+        window.onscroll = function(){
+            var oDiv = document.getElementById('div1')
+            var top = document.documentElement.scrollTop || document.body.scrollTop
+            //兼容问题----||---意思是如果前面的为真就执行前面，如果前面的为假执行后面
+            //document .documentElement.scrollTop ? document .documentElement.scrollTop : document .body.scrollTop;一个意思
+
+            // oDiv.style.top = (document.documentElement.clientHeight - oDiv.offsetHeight)/2 + top + 'px'
+            startMove(parseInt((document.documentElement.clientHeight - oDiv.offsetHeight)/2 + top))//因为之前有一个除以二，所以会出现0.5像素，导致div一直抖动，所以加一个parseInt取整
+        }
+        var timer = null 
+          function startMove(iTarget){
+                var oDiv = document.getElementById('div1')
+                clearInterval(timer)
+                timer = setInterval(function(){
+                    var speed = (iTarget-oDiv.offsetTop)/3
+                    speed = speed>0?Math.ceil(speed):Math.floor(speed)
+
+                    if(oDiv.offsetTop==iTarget){
+                        clearInterval(timer)
+                    }
+                    else{
+                        // document.title = iTarget
+                        // document.getElementById('txt1').value = oDiv.offsetTop
+                        oDiv.style.top = oDiv.offsetTop +speed+ 'px'
+                    }
+                },30)
+          }
+    </script>
+</head>
+<body style="height: 2000px;">
+    <!-- <input id="txt1" type="text" style="position: fixed;left: 0;top: 0;"> -->
+    <div id="div1"></div>
+</body>
+</html>

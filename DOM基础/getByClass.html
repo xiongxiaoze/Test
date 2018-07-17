@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function getByClass(oParent,sClass){
+            var aEle = oParent.getElementsByTagName('*')
+            var aResult = []
+            for(var i = 0;i<aEle.length;i++){
+                if(aEle[i].className==sClass){
+                    aResult.push(aEle[i])
+                }
+            }
+            return aResult
+        }
+        window.onload = function(){
+            var oUl = document.getElementById('ul1')
+            var oBox = getByClass(oUl,'Box')
+
+            for(var i = 0;i<oBox.length;i++){
+                oBox[i].style.background = 'red'
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li class="Box"></li>
+        <li class="Box"></li>
+        <li></li>
+        <li class="Box"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var oButn = document.getElementById('butn1')
+            var oTxt = document.getElementById('txt1')
+            oButn.onclick = function(){
+                // oTxt.value = 'asdasd'
+                // oTxt['value'] = 'sdsds'
+                oTxt.setAttribute('value','asdasd')
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="txt1" type="text">
+    <input id="butn1" type="button" value="按钮">
+</body>
+</html>

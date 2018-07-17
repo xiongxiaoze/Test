@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{width: 200px;height: 200px;background: red;position: absolute;top:50px;left: 0;}
+    </style>
+    <script>
+        var timer = null
+
+        function stratmove(){
+            var oDiv1 = document.getElementById('div1')
+            var speed = 1
+
+            clearInterval(timer)//开始运动的时候一定要把原来的定时器关了            
+            timer = setInterval(function(){//定时器-----注意定时器的用法
+                if(oDiv1.offsetLeft>=300){//规定范围
+                    clearInterval(timer)
+                }
+                else{//把运动停止分开
+                    oDiv1.style.left = oDiv1.offsetLeft+speed+'px'
+                }    
+            },30)
+        }
+    </script>
+</head>
+<body>
+    <input id="butn1" type="button" value="运动" onclick="stratmove()">
+    <div id="div1"></div>
+</body>
+</html>

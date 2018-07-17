@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var oTab = document.getElementById('tab1')
+            
+            var oButn = document.getElementById('butn1')
+            var oName = document.getElementById('name')
+            var oAge = document.getElementById('age')
+            var id = oTab.tBodies[0].rows.length+1
+            var oldcolor = ''
+
+
+            oButn.onclick = function(){
+                var oTr = document.createElement('tr')
+
+                var oTd = document.createElement('td')
+                oTd.innerHTML = id++
+                oTr.appendChild(oTd)
+
+                var oTd = document.createElement('td')
+                oTd.innerHTML = oName.value
+                oTr.appendChild(oTd)
+
+                var oTd = document.createElement('td')
+                oTd.innerHTML = oAge.value
+                oTr.appendChild(oTd)
+                var oTd = document.createElement('td')
+                oTd.innerHTML = '<a href = "javascript:;">删除</a>'
+                oTr.appendChild(oTd)
+                
+                oTd.getElementsByTagName('a')[0].onclick = function(){
+                    oTab.tBodies[0].removeChild(this.parentNode.parentNode)
+                }
+
+                oTab.tBodies[0].appendChild(oTr)
+            }
+            //变色
+            for(var i = 0;i<oTab.tBodies[0].rows.length;i++){
+                oTab.tBodies[0].rows[i].onmouseover = function(){
+                    oldcolor = this.style.background
+                    this.style.background = 'red'
+                }
+                oTab.tBodies[0].rows[i].onmouseout = function(){
+                    this.style.background = oldcolor
+                }
+
+                if(i%2){
+                    oTab.tBodies[0].rows[i].style.background = '#ccc'
+                }
+                else{
+                    oTab.tBodies[0].rows[i].style.background = ''
+                }
+            }
+            var oButn2 = document.getElementById('butn2')
+            var oName1 = document.getElementById('name1')
+            
+            oButn2.onclick = function(){
+                for(var i = 0;i<oTab.tBodies[0].rows.length;i++){
+                    var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()
+                    var sTxt = name1.value.toLowerCase()//大小写
+
+                    var arr = sTxt.split(' ')//搜索时用空格隔开搜关键字
+
+                    oTab.tBodies[0].rows[i].style.background = ''
+
+                    for(var j = 0;j<arr.length;j++){
+                            if(sTab.search(arr[j])!=-1){
+                            oTab.tBodies[0].rows[i].style.background = 'yellow'
+                        }
+                    }
+                }
+            }
+
+
+            // var str = 'ac vb fd'
+            // // alert(str.search('d'))//找到并返回字符串出现的位置，没有返回-1
+            // var arr = str.split(' ')//字符串在空格处切开
+            // alert(arr)
+        }
+    </script>
+</head>
+<body>
+    姓名：<input id="name" type="text">
+    年龄：<input id="age" type="text">
+    <input id="butn1" type="button" value="添加"><br>
+    搜索： <input id="name1" type="text">
+    <input id="butn2" type="button" value="搜索">
+    <table id="tab1" border="1" width = "500">
+        <thead>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>蓝色</td>
+                <td>45</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>张三</td>
+                <td>34</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李四</td>
+                <td>40</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>王五</td>
+                <td>4</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>张伟</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>王四</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
